@@ -1,12 +1,10 @@
-import random
+import requests
 
-n = int(input("Enter the number of elements: "))
-my_list = []
+response = requests.get('https://api.jikan.moe/v4/anime')
+print(response.status_code)
+print(response.json())
 
-for i in range(n):
-    animes = input("Enter anime`s options: ")
-    my_list.append(animes)
-    
-choosen = random.choice(my_list)
-print("You should watch " + choosen)
+title = response.json()['data'][0]['url']
+print(f'{title}')
 
+print('What type of ')
